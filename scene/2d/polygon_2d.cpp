@@ -311,7 +311,7 @@ void Polygon2D::_notification(int p_what) {
 			}
 
 			Vector<Color> colors;
-			
+
 			for (int i = 0; i < len; i++) {
 				colors.append(get_vertex_colors().get(i, color));
 			}
