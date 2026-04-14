@@ -978,7 +978,7 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 				real_t strength = paint_strength->get_value();
 				real_t radius = paint_radius->get_value() * EDSCALE;
 				const Vector2 *rv = editing_points.ptr();
-				Color pickedColor = vcolor_colorpicker->get_pick_color();
+				Color picked_color = vcolor_colorpicker->get_pick_color();
 
 				for (int i = 0; i < editing_points.size(); i++) {
 					if (mtx.xform(rv[i]).distance_to(paint_pos) < radius) {
