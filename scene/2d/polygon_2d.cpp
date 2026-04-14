@@ -36,6 +36,7 @@
 #include "core/object/class_db.h"
 #include "core/object/property_info.h"
 #include "core/variant/variant.h"
+#include "scene/2d/polygon_2d.compat.inc"
 #include "scene/2d/skeleton_2d.h"
 #include "servers/rendering/rendering_server.h"
 
