@@ -132,8 +132,8 @@ void Polygon2DEditor::_notification(int p_what) {
 			action_buttons[ACTION_REMOVE_POLYGON]->set_button_icon(get_editor_theme_icon(SNAME("Close")));
 			action_buttons[ACTION_PAINT_WEIGHT]->set_button_icon(get_editor_theme_icon(SNAME("Bucket")));
 			action_buttons[ACTION_CLEAR_WEIGHT]->set_button_icon(get_editor_theme_icon(SNAME("Clear")));
-			action_buttons[ACTION_PAINT_VERTEXCOLOR]->set_button_icon(get_editor_theme_icon(SNAME("Bucket")));
-			action_buttons[ACTION_CLEAR_VERTEXCOLOR]->set_button_icon(get_editor_theme_icon(SNAME("Clear")));
+			action_buttons[ACTION_PAINT_VERTEX_COLOR]->set_button_icon(get_editor_theme_icon(SNAME("Bucket")));
+			action_buttons[ACTION_CLEAR_VERTEX_COLOR]->set_button_icon(get_editor_theme_icon(SNAME("Clear")));
 
 			b_snap_grid->set_button_icon(get_editor_theme_icon(SNAME("Grid")));
 			b_snap_enable->set_button_icon(get_editor_theme_icon(SNAME("SnapGrid")));
@@ -317,9 +317,9 @@ void Polygon2DEditor::_select_mode(int p_mode) {
 			paint_pos = Vector2(-100000, -100000); // Send brush away when switching.
 		} break;
 		case MODE_VCOLOR: {
-			action_buttons[ACTION_PAINT_VERTEXCOLOR]->show();
-			action_buttons[ACTION_CLEAR_VERTEXCOLOR]->show();
-			_set_action(ACTION_PAINT_VERTEXCOLOR);
+			action_buttons[ACTION_PAINT_VERTEX_COLOR]->show();
+			action_buttons[ACTION_CLEAR_VERTEX_COLOR]->show();
+			_set_action(ACTION_PAINT_VERTEX_COLOR);
 
 			paint_strength->show();
 			paint_radius->show();
@@ -761,7 +761,7 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 						bone_painting_bone = bone_selected;
 					}
 				}
-				if (current_action == ACTION_PAINT_VERTEXCOLOR || current_action == ACTION_CLEAR_VERTEXCOLOR) {
+				if (current_action == ACTION_PAINT_VERTEX_COLOR || current_action == ACTION_CLEAR_VERTEX_COLOR) {
 					previous_colors = node->get_vertex_colors().duplicate();
 					vcolor_painting = true;
 				}
@@ -940,8 +940,8 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 					}
 				} break;
 				case ACTION_PAINT_WEIGHT:
-				case ACTION_PAINT_VERTEXCOLOR:
-				case ACTION_CLEAR_VERTEXCOLOR:
+				case ACTION_PAINT_VERTEX_COLOR:
+				case ACTION_CLEAR_VERTEX_COLOR:
 				case ACTION_CLEAR_WEIGHT: {
 					paint_pos = mm->get_position();
 				} break;
@@ -983,11 +983,11 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 				for (int i = 0; i < editing_points.size(); i++) {
 					if (mtx.xform(rv[i]).distance_to(paint_pos) < radius) {
 						TypedDictionary<uint32_t, Color> newDict = node->get_vertex_colors().duplicate();
-						if (selected_action == ACTION_CLEAR_VERTEXCOLOR) {
+						if (selected_action == ACTION_CLEAR_VERTEX_COLOR) {
 							newDict.erase(i);
 						} else {
 							Color oldColor = newDict.get(i, node->get_color());
-							Color newColor = oldColor.lerp(pickedColor, strength);
+							Color newColor = oldColor.lerp(picked_color, strength);
 							newDict.set(i, newColor);
 						}
 						node->set_vertex_colors(newDict);
@@ -1000,7 +1000,7 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 		} else if (polygon_create.size()) {
 			create_to = mtx.affine_inverse().xform(mm->get_position());
 			canvas->queue_redraw();
-		} else if (selected_action == ACTION_PAINT_WEIGHT || selected_action == ACTION_CLEAR_WEIGHT || selected_action == ACTION_PAINT_VERTEXCOLOR || selected_action == ACTION_CLEAR_VERTEXCOLOR) {
+		} else if (selected_action == ACTION_PAINT_WEIGHT || selected_action == ACTION_CLEAR_WEIGHT || selected_action == ACTION_PAINT_VERTEX_COLOR || selected_action == ACTION_CLEAR_VERTEX_COLOR) {
 			paint_pos = mm->get_position();
 			canvas->queue_redraw();
 		}
@@ -1367,7 +1367,7 @@ void Polygon2DEditor::_canvas_draw() {
 		//draw paint circle
 		canvas->draw_circle(paint_pos, paint_radius->get_value() * EDSCALE, Color(1, 1, 1, 0.1));
 	}
-	if (selected_action == ACTION_PAINT_VERTEXCOLOR || selected_action == ACTION_CLEAR_VERTEXCOLOR) {
+	if (selected_action == ACTION_PAINT_VERTEX_COLOR || selected_action == ACTION_CLEAR_VERTEX_COLOR) {
 		canvas->draw_circle(paint_pos, paint_radius->get_value() * EDSCALE, Color(1, 1, 1, 0.1));
 	}
 }
@@ -1451,8 +1451,8 @@ Polygon2DEditor::Polygon2DEditor() {
 	action_buttons[ACTION_REMOVE_POLYGON]->set_tooltip_text(TTR("Remove a custom polygon. If none remain, custom polygon rendering is disabled."));
 	action_buttons[ACTION_PAINT_WEIGHT]->set_tooltip_text(TTR("Paint weights with specified intensity."));
 	action_buttons[ACTION_CLEAR_WEIGHT]->set_tooltip_text(TTR("Unpaint weights with specified intensity."));
-	action_buttons[ACTION_PAINT_VERTEXCOLOR]->set_tooltip_text(TTRC("Paint vertices with specified color."));
-	action_buttons[ACTION_CLEAR_VERTEXCOLOR]->set_tooltip_text(TTRC("Unpaint vertices with specified color."));
+	action_buttons[ACTION_PAINT_VERTEX_COLOR]->set_tooltip_text(TTRC("Paint vertices with specified color."));
+	action_buttons[ACTION_CLEAR_VERTEX_COLOR]->set_tooltip_text(TTRC("Unpaint vertices with specified color."));
 
 	action_buttons[ACTION_CREATE]->set_accessibility_name(TTRC("Create Polygon"));
 	action_buttons[ACTION_CREATE_INTERNAL]->set_accessibility_name(TTRC("Create Internal Vertex"));
@@ -1465,8 +1465,8 @@ Polygon2DEditor::Polygon2DEditor() {
 	action_buttons[ACTION_REMOVE_POLYGON]->set_accessibility_name(TTRC("Remove a custom polygon. If none remain, custom polygon rendering is disabled."));
 	action_buttons[ACTION_PAINT_WEIGHT]->set_accessibility_name(TTRC("Paint weights with specified intensity."));
 	action_buttons[ACTION_CLEAR_WEIGHT]->set_accessibility_name(TTRC("Unpaint weights with specified intensity."));
-	action_buttons[ACTION_PAINT_VERTEXCOLOR]->set_accessibility_name(TTRC("Paint vertices with specified color."));
-	action_buttons[ACTION_CLEAR_VERTEXCOLOR]->set_accessibility_name(TTRC("Unpaint vertices with specified color."));
+	action_buttons[ACTION_PAINT_VERTEX_COLOR]->set_accessibility_name(TTRC("Paint vertices with specified color."));
+	action_buttons[ACTION_CLEAR_VERTEX_COLOR]->set_accessibility_name(TTRC("Unpaint vertices with specified color."));
 
 	paint_strength = memnew(HSlider);
 	toolbar->add_child(paint_strength);
