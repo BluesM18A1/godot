@@ -721,7 +721,6 @@ void Polygon2D::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("_get_bones"), &Polygon2D::_get_bones);
 
 	ADD_PROPERTY(PropertyInfo(Variant::COLOR, "color"), "set_color", "get_color");
-	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "use_vertex_colors"), "set_use_vertex_colors", "get_use_vertex_colors");
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "offset"), "set_offset", "get_offset");
 	ADD_PROPERTY(PropertyInfo(Variant::BOOL, "antialiased"), "set_antialiased", "get_antialiased");
 

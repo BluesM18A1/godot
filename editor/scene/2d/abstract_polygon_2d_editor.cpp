@@ -36,16 +36,17 @@
 #include "core/os/keyboard.h"
 #include "core/templates/vector.h"
 #include "core/variant/variant.h"
+#include "core/variant/typed_dictionary.h"
 #include "editor/editor_node.h"
 #include "editor/editor_string_names.h"
 #include "editor/editor_undo_redo_manager.h"
 #include "editor/scene/canvas_item_editor_plugin.h"
 #include "editor/settings/editor_settings.h"
 #include "editor/themes/editor_scale.h"
-#include "scene/2d/polygon_2d.h"
 #include "scene/gui/button.h"
 #include "scene/gui/dialogs.h"
 #include "scene/main/scene_tree.h"
+
 
 #include <cstdint>
 
