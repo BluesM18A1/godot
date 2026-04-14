@@ -35,8 +35,8 @@
 #include "core/object/object.h"
 #include "core/os/keyboard.h"
 #include "core/templates/vector.h"
-#include "core/variant/variant.h"
 #include "core/variant/typed_dictionary.h"
+#include "core/variant/variant.h"
 #include "editor/editor_node.h"
 #include "editor/editor_string_names.h"
 #include "editor/editor_undo_redo_manager.h"
@@ -46,7 +46,6 @@
 #include "scene/gui/button.h"
 #include "scene/gui/dialogs.h"
 #include "scene/main/scene_tree.h"
-
 
 #include <cstdint>
 
