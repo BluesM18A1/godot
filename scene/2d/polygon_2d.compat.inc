@@ -33,12 +33,12 @@
 #include "scene/2d/polygon_2d.h"
 
 void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
-    TypedDictionary<uint32_t, Color> new_colors;
-    for (int i = 0; i < p_colors.size(); i++) {
+	TypedDictionary<uint32_t, Color> new_colors;
+	for (int i = 0; i < p_colors.size(); i++) {
 		new_colors.set(i, p_colors[i]);
 	}
-    vertex_colors.assign(new_colors);
-    queue_redraw();
+	vertex_colors.assign(new_colors);
+	queue_redraw();
 }
 Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
 	Vector<Color> _vertex_colors;
@@ -49,8 +49,8 @@ Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
 	return _vertex_colors;
 }
 void Polygon2D::_bind_compatibility_methods() {
-    ClassDB::bind_compatibility_method(D_METHOD("get_vertex_colors"), &Polygon2D::_get_vertex_colors_118023);
-    ClassDB::bind_compatibility_method(D_METHOD("set_vertex_colors, colors"), &Polygon2D::_set_vertex_colors_118023);
+	ClassDB::bind_compatibility_method(D_METHOD("get_vertex_colors"), &Polygon2D::_get_vertex_colors_118023);
+	ClassDB::bind_compatibility_method(D_METHOD("set_vertex_colors, colors"), &Polygon2D::_set_vertex_colors_118023);
 }
 
 #endif // DISABLE_DEPRECATED
