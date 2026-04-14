@@ -30,7 +30,9 @@
 
 #ifndef DISABLE_DEPRECATED
 
-#include "scene/2d/polygon_2d.h"
+#include "polygon_2d.h"
+
+#include "core/object/class_db.h"
 
 void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
 	TypedDictionary<uint32_t, Color> new_colors;
@@ -42,7 +44,7 @@ void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
 
 Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
 	Vector<Color> _vertex_colors;
-	_vertex_colors.resize(vertex_colors.size());
+	_vertex_colors.resize(get_vertex_colors().size());
 	for (int i = 0; i < vertex_colors.size(); i++) {
 		_vertex_colors.write[i] = vertex_colors.values()[i];
 	}

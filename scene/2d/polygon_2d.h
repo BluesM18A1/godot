@@ -128,7 +128,7 @@ public:
 	Color get_color() const;
 
 	void set_vertex_colors(const TypedDictionary<uint32_t, Color> &p_colors);
-	TypedDictionary<uint32_t, Color> &get_vertex_colors();
+	TypedDictionary<uint32_t, Color> get_vertex_colors() const;
 
 	void set_texture(const Ref<Texture2D> &p_texture);
 	Ref<Texture2D> get_texture() const;

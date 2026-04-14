@@ -29,6 +29,7 @@
 /**************************************************************************/
 
 #include "polygon_2d.h"
+#include "polygon_2d.compat.inc"
 
 #include "core/config/engine.h"
 #include "core/math/geometry_2d.h"
@@ -36,7 +37,6 @@
 #include "core/object/class_db.h"
 #include "core/object/property_info.h"
 #include "core/variant/variant.h"
-#include "scene/2d/polygon_2d.compat.inc"
 #include "scene/2d/skeleton_2d.h"
 #include "servers/rendering/rendering_server.h"
 
@@ -479,7 +479,7 @@ void Polygon2D::set_vertex_colors(const TypedDictionary<uint32_t, Color> &p_colo
 	queue_redraw();
 }
 
-TypedDictionary<uint32_t, Color> &Polygon2D::get_vertex_colors() {
+TypedDictionary<uint32_t, Color> Polygon2D::get_vertex_colors() const {
 	return vertex_colors;
 }
 
