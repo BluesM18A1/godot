@@ -48,6 +48,7 @@ Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
 	}
 	return _vertex_colors;
 }
+
 void Polygon2D::_bind_compatibility_methods() {
 	ClassDB::bind_compatibility_method(D_METHOD("get_vertex_colors"), &Polygon2D::_get_vertex_colors_118023);
 	ClassDB::bind_compatibility_method(D_METHOD("set_vertex_colors, colors"), &Polygon2D::_set_vertex_colors_118023);
