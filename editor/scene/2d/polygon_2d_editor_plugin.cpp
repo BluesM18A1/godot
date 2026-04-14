@@ -982,15 +982,15 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 
 				for (int i = 0; i < editing_points.size(); i++) {
 					if (mtx.xform(rv[i]).distance_to(paint_pos) < radius) {
-						TypedDictionary<uint32_t, Color> newDict = node->get_vertex_colors().duplicate();
+						TypedDictionary<uint32_t, Color> new_dict = node->get_vertex_colors().duplicate();
 						if (selected_action == ACTION_CLEAR_VERTEX_COLOR) {
-							newDict.erase(i);
+							new_dict.erase(i);
 						} else {
-							Color oldColor = newDict.get(i, node->get_color());
-							Color newColor = oldColor.lerp(picked_color, strength);
-							newDict.set(i, newColor);
+							Color old_color = new_dict.get(i, node->get_color());
+							Color new_color = old_color.lerp(picked_color, strength);
+							new_dict.set(i, new_color);
 						}
-						node->set_vertex_colors(newDict);
+						node->set_vertex_colors(new_dict);
 					}
 				}
 			}
