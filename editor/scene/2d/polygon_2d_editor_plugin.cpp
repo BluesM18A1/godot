@@ -531,7 +531,7 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 							undo_redo->add_undo_method(node, "set_polygon", previous_polygon);
 							undo_redo->add_do_method(node, "set_internal_vertex_count", 0);
 							undo_redo->add_undo_method(node, "set_internal_vertex_count", previous_internal_vertices);
-							undo_redo->add_do_method(node, "set_vertex_colors", Vector<Color>());
+							undo_redo->add_do_method(node, "set_vertex_colors", TypedDictionary<uint32_t, Color>());
 							undo_redo->add_undo_method(node, "set_vertex_colors", previous_colors);
 							undo_redo->add_do_method(node, "clear_bones");
 							undo_redo->add_undo_method(node, "_set_bones", previous_bones);
