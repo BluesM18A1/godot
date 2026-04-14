@@ -32,7 +32,6 @@
 
 #include "editor/scene/2d/abstract_polygon_2d_editor.h"
 #include "scene/2d/polygon_2d.h"
-#include "scene/gui/color_picker.h"
 
 class AcceptDialog;
 class ButtonGroup;
