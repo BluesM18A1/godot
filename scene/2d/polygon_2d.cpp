@@ -480,7 +480,6 @@ void Polygon2D::set_vertex_colors(const TypedDictionary<uint32_t, Color> &p_colo
 
 TypedDictionary<uint32_t, Color> &Polygon2D::get_vertex_colors() {
 	return vertex_colors;
-	queue_redraw();
 }
 
 void Polygon2D::set_texture(const Ref<Texture2D> &p_texture) {
