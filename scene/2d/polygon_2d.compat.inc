@@ -42,7 +42,6 @@ void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
 	set_vertex_colors(new_colors);
 }
 
-
 Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
 	Vector<Color> _vertex_colors;
 	_vertex_colors.resize(get_vertex_colors().size());
