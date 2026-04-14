@@ -37,8 +37,7 @@ void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
 	for (int i = 0; i < p_colors.size(); i++) {
 		new_colors.set(i, p_colors[i]);
 	}
-	vertex_colors.assign(new_colors);
-	queue_redraw();
+	set_vertex_colors(new_colors);
 }
 Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
 	Vector<Color> _vertex_colors;
