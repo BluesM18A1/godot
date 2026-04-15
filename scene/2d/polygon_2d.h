@@ -87,7 +87,7 @@ class Polygon2D : public Node2D {
 
 protected:
 	void _notification(int p_what);
-static void _bind_methods();
+	static void _bind_methods();
 
 #ifndef DISABLE_DEPRECATED
 	void _set_vertex_colors_118023(const Vector<Color> &p_colors);
