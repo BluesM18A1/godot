@@ -43,12 +43,13 @@ void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
 }
 
 Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
-	Vector<Color> _vertex_colors;
-	_vertex_colors.resize(get_polygon().size());
-	for (int i = 0; i < _vertex_colors.size(); i++) {
-		_vertex_colors.write[i] = get_vertex_colors().get(i, get_color());
+	Vector<Color> ret;
+	TypedDictionary<uint32_t, Color> _vertex_colors = get_vertex_colors();
+	ret.resize(get_polygon().size());
+	for (int64_t i = 0; i < ret.size(); i++) {
+		ret.write[i] = _vertex_colors.get(i, get_color());
 	}
-	return _vertex_colors;
+	return ret;
 }
 
 void Polygon2D::_bind_compatibility_methods() {
