@@ -740,7 +740,7 @@ void Polygon2D::_bind_methods() {
 	ADD_GROUP("Data", "");
 	ADD_PROPERTY(PropertyInfo(Variant::PACKED_VECTOR2_ARRAY, "polygon"), "set_polygon", "get_polygon");
 	ADD_PROPERTY(PropertyInfo(Variant::PACKED_VECTOR2_ARRAY, "uv"), "set_uv", "get_uv");
-	ADD_PROPERTY(PropertyInfo(Variant::DICTIONARY, "vertex_colors", PROPERTY_HINT_DICTIONARY_TYPE, "int;Color"), "set_vertex_colors", "get_vertex_colors");
+	ADD_PROPERTY(PropertyInfo(Variant::DICTIONARY, "vertex_colors", PROPERTY_HINT_DICTIONARY_TYPE, vformat("%s/%s:0,2147483647;Color", Variant::INT, PROPERTY_HINT_RANGE)), "set_vertex_colors", "get_vertex_colors");
 	ADD_PROPERTY(PropertyInfo(Variant::ARRAY, "polygons", PROPERTY_HINT_TYPE_STRING, "PackedInt32Array"), "set_polygons", "get_polygons");
 	ADD_PROPERTY(PropertyInfo(Variant::ARRAY, "bones", PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NO_EDITOR | PROPERTY_USAGE_INTERNAL), "_set_bones", "_get_bones");
 	ADD_PROPERTY(PropertyInfo(Variant::INT, "internal_vertex_count", PROPERTY_HINT_RANGE, "0,1000"), "set_internal_vertex_count", "get_internal_vertex_count");
