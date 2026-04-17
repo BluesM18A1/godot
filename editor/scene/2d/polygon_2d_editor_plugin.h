@@ -133,7 +133,7 @@ class Polygon2DEditor : public AbstractPolygon2DEditor {
 	Vector<Vector2> editing_points;
 	Vector<Vector2> previous_uv;
 	Vector<Vector2> previous_polygon;
-	TypedDictionary<uint32_t, Color> previous_colors;
+	TypedDictionary<int, Color> previous_colors;
 	int previous_internal_vertices = 0;
 	Array previous_bones;
 	Array previous_polygons;

@@ -35,7 +35,7 @@
 #include "core/object/class_db.h"
 
 void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
-	TypedDictionary<uint32_t, Color> new_colors;
+	TypedDictionary<int, Color> new_colors;
 	for (int i = 0; i < p_colors.size(); i++) {
 		new_colors.set(i, p_colors[i]);
 	}
@@ -44,9 +44,9 @@ void Polygon2D::_set_vertex_colors_118023(const Vector<Color> &p_colors) {
 
 Vector<Color> Polygon2D::_get_vertex_colors_118023() const {
 	Vector<Color> ret;
-	TypedDictionary<uint32_t, Color> _vertex_colors = get_vertex_colors();
+	TypedDictionary<int, Color> _vertex_colors = get_vertex_colors();
 	ret.resize(get_polygon().size());
-	for (int64_t i = 0; i < ret.size(); i++) {
+	for (int i = 0; i < ret.size(); i++) {
 		ret.write[i] = _vertex_colors.get(i, get_color());
 	}
 	return ret;

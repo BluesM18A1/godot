@@ -474,12 +474,12 @@ Color Polygon2D::get_color() const {
 	return color;
 }
 
-void Polygon2D::set_vertex_colors(const TypedDictionary<uint32_t, Color> &p_colors) {
+void Polygon2D::set_vertex_colors(const TypedDictionary<int, Color> &p_colors) {
 	vertex_colors = p_colors;
 	queue_redraw();
 }
 
-TypedDictionary<uint32_t, Color> Polygon2D::get_vertex_colors() const {
+TypedDictionary<int, Color> Polygon2D::get_vertex_colors() const {
 	return vertex_colors;
 }
 

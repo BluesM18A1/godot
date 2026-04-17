@@ -62,8 +62,6 @@
 #include "scene/main/scene_tree.h"
 #include "servers/rendering/rendering_server.h"
 
-#include <cstdint>
-
 Node2D *Polygon2DEditor::_get_node() const {
 	return node;
 }
@@ -531,7 +529,7 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 							undo_redo->add_undo_method(node, "set_polygon", previous_polygon);
 							undo_redo->add_do_method(node, "set_internal_vertex_count", 0);
 							undo_redo->add_undo_method(node, "set_internal_vertex_count", previous_internal_vertices);
-							undo_redo->add_do_method(node, "set_vertex_colors", TypedDictionary<uint32_t, Color>());
+							undo_redo->add_do_method(node, "set_vertex_colors", TypedDictionary<int, Color>());
 							undo_redo->add_undo_method(node, "set_vertex_colors", previous_colors);
 							undo_redo->add_do_method(node, "clear_bones");
 							undo_redo->add_undo_method(node, "_set_bones", previous_bones);
@@ -982,7 +980,7 @@ void Polygon2DEditor::_canvas_input(const Ref<InputEvent> &p_input) {
 
 				for (int i = 0; i < editing_points.size(); i++) {
 					if (mtx.xform(rv[i]).distance_to(paint_pos) < radius) {
-						TypedDictionary<uint32_t, Color> new_dict = node->get_vertex_colors().duplicate();
+						TypedDictionary<int, Color> new_dict = node->get_vertex_colors().duplicate();
 						if (selected_action == ACTION_CLEAR_VERTEX_COLOR) {
 							new_dict.erase(i);
 						} else {
